@@ -1,7 +1,7 @@
 {
   "name": "buy",
-  "homepage": "https://adridutta.github.io/Buy/",
-  "private": false,
+  "homepage": "https://megapintcollections.github.io/Buy/",
+  "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
