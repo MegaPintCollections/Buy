@@ -26,8 +26,8 @@ function WineGlassComponent({onBuyNowClick}: ChildProps) {
                             variant="square"
                             alt="Rectangular"
                             sx={{
-                            width: 100, 
-                            height: 250, 
+                            width: 150, 
+                            height: 400, 
                             img:{
                                 objectFit: 'contain',
                             },
