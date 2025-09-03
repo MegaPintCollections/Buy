@@ -17,7 +17,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: echo "Logging into Docker Hub"
-      - run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+      - run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD --password-stdin
       - run: docker build -t $DOCKER_IMAGE .
       - run: docker push $DOCKER_IMAGE
 
