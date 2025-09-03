@@ -11,8 +11,9 @@ on:
       - main
 
 jobs:
-  runs-on: ubuntu-latest
+
   docker_build:
+    runs-on: ubuntu-latest
     steps:
       run: echo "Logging into Docker Hub"
       run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
