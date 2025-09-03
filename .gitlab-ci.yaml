@@ -1,0 +1,21 @@
+variables:
+  DOCKER_IMAGE: "adridutta/Buy:latest"
+
+stages:
+  - build
+  - deploy
+
+docker_build:
+  stage: build
+  script:
+    - echo "Logging into Docker Hub"
+    - docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+    - docker build -t $DOCKER_IMAGE
+    - docker push $DOCKER_IMAGE
+
+deploy:
+  stage: deploy
+  script:
+    - echo "Deploying to server"
+    - docker pull $DOCKER_IMAGE
+    - docker run -d $DOCKER_IMAGE
