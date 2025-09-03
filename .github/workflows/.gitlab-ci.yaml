@@ -1,21 +1,26 @@
-variables:
-  DOCKER_IMAGE: "adridutta/Buy:latest"
+name: Docker Deployment
 
-stages:
-  - build
-  - deploy
+env:
+  DOCKER_IMAGE: "adridutta/Buy:latest"          
+  DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }} 
+  DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
 
-docker_build:
-  stage: build
-  script:
-    - echo "Logging into Docker Hub"
-    - docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-    - docker build -t $DOCKER_IMAGE
-    - docker push $DOCKER_IMAGE
+on:
+  push:
+    branches:
+      - main
 
-deploy:
-  stage: deploy
-  script:
-    - echo "Deploying to server"
-    - docker pull $DOCKER_IMAGE
-    - docker run -d $DOCKER_IMAGE
+jobs:
+  docker_build:
+    steps:
+      run: echo "Logging into Docker Hub"
+      run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+      run: docker build -t $DOCKER_IMAGE
+      run: docker push $DOCKER_IMAGE
+
+  deploy:
+    needs: docker_build
+    steps:
+      - echo "Deploying to server"
+      - docker pull $DOCKER_IMAGE
+      - docker run -d $DOCKER_IMAGE
