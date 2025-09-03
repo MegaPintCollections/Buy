@@ -1,9 +1,10 @@
 import React from 'react';
 import { Card, CardContent, Typography, Box, Button, Avatar } from '@mui/material';
 import { motion, AnimatePresence } from 'framer-motion';
-import wineglass from './assets/wine_glass_cropped.png'
+//import wineglass from './assets/wine_glass_cropped.png'
+//sx={{paddingTop: "10px", paddingBottom: "10px", paddingLeft: "50px", paddingRight: "50px", margin: "20px auto", backgroundImage: `url(${backgroundImage})`}}
 import Paper from '@mui/material/Paper';
-import backgroundImage from './assets/Capture.png'
+//import backgroundImage from './assets/Capture.png'
 
 
 type ChildProps = {
@@ -20,9 +21,9 @@ function WineGlassComponent({onBuyNowClick}: ChildProps) {
                     sx={{zIndex: 2}} // Centers the content vertically and horizontally
                 >
                     <Typography variant="h5" color = "text.primary" textAlign= "center">Thanks for supporting the channel!</Typography>
-                    <Paper elevation = {3} sx={{paddingTop: "10px", paddingBottom: "10px", paddingLeft: "50px", paddingRight: "50px", margin: "20px auto", backgroundImage: `url(${backgroundImage})`}}>
+                    <Paper elevation = {3} >
                         <Avatar 
-                            src = {wineglass}
+                            //src = {wineglass}
                             variant="square"
                             alt="Rectangular"
                             sx={{
